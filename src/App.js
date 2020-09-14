@@ -10,32 +10,32 @@ import Header from "./components/header";
 import "./App.scss";
 
 function App() {
-  const imageDetails = {
-    width: 524,
-    height: 650,
-  };
+    const imageDetails = {
+        width: 524,
+        height: 650,
+    };
 
-  return (
-    <Router>
-      <Header />
-      <Route
-        render={({ location }) => (
-          <Switch location={location} key={location.pathname}>
+    return (
+        <Router>
+            <Header />
             <Route
-              exact
-              path='/'
-              render={() => <Home imageDetails={imageDetails} />}
+                render={({ location }) => (
+                    <Switch location={location} key={location.pathname}>
+                        <Route
+                            exact
+                            path="/"
+                            render={() => <Home imageDetails={imageDetails} />}
+                        />
+                        <Route
+                            exact
+                            path="/model/:id"
+                            render={() => <Model imageDetails={imageDetails} />}
+                        />
+                    </Switch>
+                )}
             />
-            <Route
-              exact
-              path='/model/:id'
-              render={() => <Model imageDetails={imageDetails} />}
-            />
-          </Switch>
-        )}
-      />
-    </Router>
-  );
+        </Router>
+    );
 }
 
 export default App;
